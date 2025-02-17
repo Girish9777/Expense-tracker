@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saving Goal Calculator</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+        }
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            color: #28a745;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center">Saving Goal Calculator</h2>
+    <form id="goalCalculatorForm">
+        <div class="form-group">
+            <label for="targetAmount">Target Savings Goal (₹):</label>
+            <input type="number" class="form-control" id="targetAmount" required>
+        </div>
+        <div class="form-group">
+            <label for="currentSavings">Current Savings (₹):</label>
+            <input type="number" class="form-control" id="currentSavings" required>
+        </div>
+        <div class="form-group">
+            <label for="monthlyContribution">Monthly Contribution (₹):</label>
+            <input type="number" class="form-control" id="monthlyContribution" required>
+        </div>
+        <div class="form-group">
+            <label for="interestRate">Expected Annual Interest Rate (%):</label>
+            <input type="number" class="form-control" id="interestRate" step="0.1" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Calculate</button>
+    </form>
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    document.getElementById('goalCalculatorForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Retrieve user inputs
+        const targetAmount = parseFloat(document.getElementById('targetAmount').value);
+        const currentSavings = parseFloat(document.getElementById('currentSavings').value);
+        const monthlyContribution = parseFloat(document.getElementById('monthlyContribution').value);
+        const annualInterestRate = parseFloat(document.getElementById('interestRate').value) / 100;
+
+        // Monthly interest rate
+        const monthlyInterestRate = annualInterestRate / 12;
+        let months = 0;
+        let balance = currentSavings;
+
+        // Calculate number of months required to reach the goal
+        while (balance < targetAmount) {
+            balance += monthlyContribution;
+            balance += balance * monthlyInterestRate;
+            months += 1;
+
+            // Break the loop if it takes too long (to avoid infinite loops)
+            if (months > 1000) {
+                document.getElementById('result').innerText = "It may take too long to reach your goal with the current inputs.";
+                return;
+            }
+        }
+
+        // Display the result
+        const years = Math.floor(months / 12);
+        const remainingMonths = months % 12;
+        document.getElementById('result').innerText = `You will reach your savings goal in approximately ${years} years and ${remainingMonths} months.`;
+
+    });
+</script>
+
+</body>
+</html>

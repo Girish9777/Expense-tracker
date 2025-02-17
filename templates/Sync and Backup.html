@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sync and Backup</title>
+    <style>
+        /* Basic Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Container Styling */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            width: 300px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        /* Title Styling */
+        h1 {
+            color: #007bff;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        /* Button Styling */
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 1rem;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-sync {
+            background-color: #007bff;
+        }
+
+        .btn-sync:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-backup {
+            background-color: #28a745;
+        }
+
+        .btn-backup:hover {
+            background-color: #218838;
+        }
+
+        /* Progress Bar Styling */
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 20px;
+            display: none; /* Hidden by default */
+        }
+
+        .progress-bar-inner {
+            height: 100%;
+            width: 0;
+            background-color: #007bff;
+            transition: width 0.4s ease;
+        }
+
+        .status-message {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sync & Backup</h1>
+        <button class="btn btn-sync" onclick="startSync()">Sync Now</button>
+        <button class="btn btn-backup" onclick="startBackup()">Backup Now</button>
+
+        <!-- Progress Bar and Status Message -->
+        <div class="progress-bar" id="progressBar">
+            <div class="progress-bar-inner" id="progressBarInner"></div>
+        </div>
+        <div class="status-message" id="statusMessage"></div>
+    </div>
+
+    <script>
+        // Function to start Sync process
+        function startSync() {
+            runProgress("Syncing data...");
+        }
+
+        // Function to start Backup process
+        function startBackup() {
+            runProgress("Backing up data...");
+        }
+
+        // Function to simulate progress bar
+        function runProgress(message) {
+            const progressBar = document.getElementById('progressBar');
+            const progressBarInner = document.getElementById('progressBarInner');
+            const statusMessage = document.getElementById('statusMessage');
+            
+            // Initialize
+            progressBar.style.display = 'block';
+            progressBarInner.style.width = '0';
+            statusMessage.textContent = message;
+            
+            let width = 0;
+
+            // Interval to simulate progress
+            const interval = setInterval(() => {
+                width += 10;
+                progressBarInner.style.width = width + '%';
+
+                if (width >= 100) {
+                    clearInterval(interval);
+                    statusMessage.textContent = "Operation completed successfully!";
+                    setTimeout(() => {
+                        progressBar.style.display = 'none';
+                        statusMessage.textContent = '';
+                    }, 1500);
+                }
+            }, 400);
+        }
+    </script>
+</body>
+</html>

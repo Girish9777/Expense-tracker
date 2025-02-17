@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerts and Reminders</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your main CSS file -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 25px;
+            font-size: 2.5em;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        input, button {
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .reminders-list {
+            margin-top: 20px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .reminder-item {
+            background-color: #e9ecef;
+            border-radius: 5px;
+            margin: 10px 0;
+            padding: 10px;
+            position: relative;
+        }
+
+        .remove-btn {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            background: none;
+            border: none;
+            color: #dc3545;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Alerts and Reminders</h1>
+        <form id="reminder-form">
+            <label for="reminder">Set a Reminder:</label>
+            <input type="text" id="reminder" placeholder="e.g., Pay rent on 1st" required>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" required>
+
+            <button type="submit">Add Reminder</button>
+        </form>
+
+        <h2>Your Reminders</h2>
+        <ul class="reminders-list" id="reminders-list">
+            <!-- Reminders will be dynamically added here -->
+        </ul>
+    </div>
+
+    <script>
+        const form = document.getElementById('reminder-form');
+        const remindersList = document.getElementById('reminders-list');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const reminderText = document.getElementById('reminder').value;
+            const dateValue = document.getElementById('date').value;
+
+            // Create a new reminder item
+            const listItem = document.createElement('li');
+            listItem.classList.add('reminder-item');
+            listItem.innerHTML = `
+                <span>${reminderText} - <strong>${dateValue}</strong></span>
+                <button class="remove-btn">✖</button>
+            `;
+            remindersList.appendChild(listItem);
+
+            // Clear form
+            form.reset();
+
+            // Add event listener to remove button
+            const removeBtn = listItem.querySelector('.remove-btn');
+            removeBtn.addEventListener('click', function() {
+                remindersList.removeChild(listItem);
+            });
+        });
+    </script>
+</body>
+</html>

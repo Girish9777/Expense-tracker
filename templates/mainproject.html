@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track your wallet</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style3.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<section class="header" style='background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url('{{ url_for('static', filename='images/background.jpg') }}');'>
+    <nav>
+        <a href="index.html"><img src="{{ url_for('static', filename='images/PROJECT_IMAGE.png') }}"></a><p><h1>TRACK YOUR WALLET</h1></p>
+        <h2 class="title"></h2>
+        <div class="nav-links" id="navLinks">
+            <i class="fa fa-times-circle" onclick="hidemenu()"></i>
+            <ul>
+                <li><a href="">HOME</a></li>
+                <li><a href="about us.html">ABOUT</a></li>
+                <li><a href="benefits.html">BENEFITS</a></li>
+                <li><a href="blog.html">BLOG</a></li>
+                <li><a href="">CONTACT</a></li>
+            </ul>
+        </div>
+        <i class="fa fa-bars" onclick="showmenu()"></i>
+    </nav>
+<div class="text-box">
+    <h1 class="moto"><span style="color:white;">Simple Way</span><span style="color:white;">To Manage</span> <span
+        style="color:orange;">personal Finances</span></h1>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui harum nisi vitae beatae laborum laboriosam quaerat quod
+    illo doloribus error tenetur ducimus, sit eligendi distinctio dolorem dolore, ab cumque unde.
+    </p>
+    <a href="" class="btn">visit us to know more</a>
+</div>
+</section>
+<!--what we seek-->
+<section class="intro">
+    <div class="goal">
+        <div class="source1">
+            <img src="{{ url_for('static', filename='images/simple.png') }}">
+            <div>
+                <h3>Money Tracker</h3>
+                <p>It takes seconds to record daily transactions. Put them into clear and visualized categories such as Expense: Food,
+                    Shopping or Income: Salary, Gift.</p>
+            </div>
+        </div>
+        <div class="source2">
+            <div>
+                <h3>Effortless budgeting</h3>
+                <p>It takes seconds to record daily transactions. Put them into clear and visualized categories such as Expense: Food,
+                Shopping or Income: Salary, Gift.</p>
+            </div>
+            <div>
+            <img src="{{ url_for('static', filename='images/budget.png') }}">
+            </div>
+        </div>
+        <div class="source3">
+            <img src="{{ url_for('static', filename='images/REPORT.png') }}">
+            <div>
+                <h3>An Overview</h3>
+                <p>One report to give a clear view on your spending patterns. Understand where your money comes and goes with easy-to-read
+                 graphs.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--BENEFITS-->
+<section class="our-benefits">
+    <h1>Features our user love</h1>
+
+    <div class="row">
+        <div class="benefits-col">
+            <img src="{{ url_for('static', filename='images/currency.jpg') }}" class="currency">
+            <h3>Multiple currencies</h3>
+            <p>are favoured by travellers and digital nomads managing money in more currencies.</p>
+            <a href="multiple-currencies.html">Learn More</a>
+        </div>
+        <div class="benefits-col">
+            <img src="{{ url_for('static', filename='images/wallet.jpg') }}" class="wallet">
+            <h3>Shared wallets</h3>
+            <p>are popular among couples, families and roommates who handle their finances in track your wallet</p>
+            <a href="savinggoalcalcu.html">Learn More</a>
+        </div>
+        <div class="benefits-col">
+            <img src="{{ url_for('static', filename='images/bell.jpg') }}" class="bell">
+            <h3>Alerts and reminders</h3>
+            <p>track your wallet will notify you to pay the bill or not to exceed the budget.</p>
+            <a href="alerts-reminders.html">Learn More</a>
+        </div>
+    </div>
+    <div class="row2">
+        <div class="benefits-col1">
+            <img src="{{ url_for('static', filename='images/4.svg') }}">
+            <h3>Saving plan</h3>
+            <p>.Keep track on savings process to meet your financial goals.</p>
+            <a href="savings.html">Learn More</a>
+        </div>
+        <div class="benefits-col1">
+            <img src="{{ url_for('static', filename='images/6.svg') }}">
+            <h3>Scan Reciept</h3>
+            <p>Take pictures of your receipts to auto-process and organize them.</p>
+            <a href="scan reciept.html">Learn More</a>
+        </div>
+        <div class="benefits-col1">
+            <img src="{{ url_for('static', filename='images/1.svg') }}">
+            <h3>Sync and backup</h3>
+            <p>is valuable for everyone using Track your wallet across devices and sharing Track your wallet with others.Safely synchronize across devices with Bank standard security.</p>
+            <a href="Sync and Backup.html">Learn More</a>
+        </div>
+    </div>
+</section>
+<!-- Top Notch Security-->
+<section class="security">
+    <h1>TOP-NOTCH SECURITY</h1>
+    <div class="row3">
+        <div class="zsecurity">
+            <h3>DATA SCANS &AUDITS</h3>
+            <P>Independent, reputed security firms conduct rigorous daily scans, comprising dynamic port scanning, network
+               vulnerability testing, and web application vulnerability testing.</P>
+         </div>
+         <div class="image1">
+            <img src="{{ url_for('static', filename='images/security.jpg') }}">
+         </div>
+        <div class="zsecurity">
+        <h3>STRONG ENCRYPTION</h3>
+        <P>Our infrastructure is compliant with industry standards. High-grade 256-bit encryption is used to
+        store sensitive information, and secure communication with your computer to prevent a third party from eavesdropping.</P>
+        </div>
+    </div>
+
+</section>
+<!-- login-->
+
+<section class="cta">
+    <h1>Get monthly money tips and<br>
+        stay on top of your finance</h1>
+    <a href="/login" class="btn">LOGIN</a>
+</section>
+
+<!--footer-->
+<section class="footer">
+    <h4>About us</h4>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, pariatur nobis optio adipisci officia eaque perferendis
+    soluta, ab illo quibusdam, corrupti iusto accusamus enim rem eum id obcaecati repellat illum?<br>Et veniam assumenda
+    asperiores suscipit provident dolore vero impedit nobis.</p>
+    <div class="icons">
+        <i class="fa fa-facebook"></i>
+        <i class="fa fa-twitter"></i>
+        <i class="fa fa-instagram"></i>
+        <i class="fa fa-linkedin"></i>
+        <i class="fa fa-google"></i>
+    </div>
+</section>
+
+
+<script>
+    var navLinks = document.getElementById("navLinks");
+    function showmenu(){
+        navLinks.style.right = "0";
+    }
+    function hidemenu(){
+        navLinks.style.right = "-200px";
+    }
+</script>
+</body>
+</html>

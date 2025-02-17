@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRACK YOUR WALLET</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="title">TRACK YOUR EXPENSES</h2>
+            </div>
+            <div class="list">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About us</a></li>
+                    <li><a href"/contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="search">
+                <input class="find" type="search" name="" placeholder="type to text...">
+                <a href="#button"><button class="button">Search</button></a>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1><span style="color:orange;">Simple Way</span><span style="color:white;">To Manage</span> <span style="color:orange;">personal Finances</span></h1>
+            
+            <button class="connect"><a href="#button"> JOIN US</a></button>
+
+            <!-- Flask Login Form -->
+            <div class="form">
+                <h2>Login Here</h2>
+
+                <!-- Use the Flask form here -->
+                <form method="POST">
+                    {{ form.hidden_tag() }}  <!-- This will render the CSRF token -->
+
+                    <div>
+                        <label for="email">Email:</label>
+                        {{ form.email(class="input") }}
+                        {% if form.email.errors %}
+                            <ul>
+                                {% for error in form.email.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+
+                    <div>
+                        <label for="password">Password:</label>
+                        {{ form.password(class="input") }}
+                        {% if form.password.errors %}
+                            <ul>
+                                {% for error in form.password.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+
+                    <button class="button2" type="submit">Login</button>
+                </form>
+
+                <p class="aaa">Don't have an account<br>
+                    <a href="/register">Create Account</a>
+                </p>
+
+                <p class="bbb">Login in with</p>
+                <div class="icon">
+                    <a href="#icon"><ion-icon name="logo-facebook"></ion-icon></a>
+                    <a href="#icon"><ion-icon name="logo-google"></ion-icon></a>
+                    <a href="#icon"><ion-icon name="logo-twitter"></ion-icon></a>
+                    <a href="#icon"><ion-icon name="logo-linkedin"></ion-icon></a>
+                    <a href="#icon"><ion-icon name="logo-instagram"></ion-icon></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style3.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<section class="sub-header background">
+    <nav>
+        <a href="index.html"><img src="PROJECT IMAGE.png"></a><p><h1>TRACK YOUR WALLET</h1></p>
+        <div class="nav-links" id="navLinks">
+            <i class="fa fa-times-circle" onclick="hidemenu()"></i>
+              <ul>
+                <li><a href="mainproject.html">HOME</a></li>
+                <li><a href="about us.html">ABOUT</a></li>
+                <li><a href="benefits.html">BENEFITS</a></li>
+                <li><a href="">BLOG</a></li>
+                <li><a href="">CONTACT</a></li>
+              </ul>
+        </div>
+        <i class="fa fa-bars" onclick="showmenu()"></i>
+    </nav>
+    <h1 class="">BLOG</h1>
+</section>
+
+<section class="blog-content">
+    <div class="row">
+        <div class="part1">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlylEp7dwsVVXxCdOUOd7aVrYUr-jQt-wMTA&s">
+            <h2>BLOG</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat dolorum fuga enim magnam vitae nam unde, voluptatibus,
+            saepe explicabo error autem, eum deleniti nihil. Ipsum ab, dicta earum eaque sit velit dignissimos et tempore vitae
+            veniam labore nisi. Voluptatibus eum obcaecati iure! Mollitia accusamus voluptate explicabo maiores, similique odit id
+            suscipit soluta velit esse labore est ducimus neque dolor voluptatum.</p><br>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat dolorum fuga enim magnam vitae nam unde, voluptatibus,
+            saepe explicabo error autem, eum deleniti nihil. Ipsum ab, dicta earum eaque sit velit dignissimos et tempore vitae
+            veniam labore nisi. Voluptatibus eum obcaecati iure! Mollitia accusamus voluptate explicabo maiores, similique odit id
+            suscipit soluta velit esse labore est ducimus neque dolor voluptatum</p><br>
+             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat dolorum fuga enim magnam vitae nam unde, voluptatibus,
+            saepe explicabo error autem, eum deleniti nihil. Ipsum ab, dicta earum eaque sit velit dignissimos et tempore vitae
+            veniam labore nisi. Voluptatibus eum obcaecati iure! Mollitia accusamus voluptate explicabo maiores, similique odit id
+            suscipit soluta velit esse labore est ducimus neque dolor voluptatum</p>
+
+            <div class="comment-box">
+                <h3>Leave a comment</h3>
+                <form class="comment-form">
+                <input type="text" placeholder="Enter Name">
+                <input type="text" placeholder="Enter Email">
+                <textarea rows="5" placeholder="your comment"></textarea>
+                <button type="submit" class="btn new-btn">POST COMMENT</button>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+<section class="footer newfooter">
+    <h4>About us</h4>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, pariatur nobis optio adipisci officia eaque perferendis
+    soluta, ab illo quibusdam, corrupti iusto accusamus enim rem eum id obcaecati repellat illum?<br>Et veniam assumenda
+    asperiores suscipit provident dolore vero impedit nobis.</p>
+    <div class="icons">
+        <i class="fa fa-facebook"></i>
+        <i class="fa fa-twitter"></i>
+        <i class="fa fa-instagram"></i>
+        <i class="fa fa-linkedin"></i>
+        <i class="fa fa-google"></i>
+    </div>
+</section>
+
+<!----Javascript---->
+<script>
+    var navLinks = document.getElementById("navLinks");
+    function showmenu(){
+        navLinks.style.right = "0";
+    }
+    function hidemenu(){
+        navLinks.style.right = "-200px";
+    }
+</script>
+</body>
+</html>

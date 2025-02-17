@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Currencies Support</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px; /* Increased width for more content */
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border: 3px solid #007bff; /* Blue border for the container */
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff; /* Color for heading */
+            margin-bottom: 25px;
+            font-size: 2.5em; /* Bigger font size */
+        }
+
+        h2 {
+            color: #333333; /* Dark color for subheadings */
+            margin-top: 20px; /* Margin for spacing */
+            border-bottom: 2px solid #007bff; /* Underline effect */
+            padding-bottom: 5px;
+        }
+
+        p, ul {
+            color: #555555; /* Softer color for text */
+            line-height: 1.6;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #28a745; /* Green background for buttons */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+
+        .currency-icon {
+            width: 30px; /* Slightly larger icon */
+            height: 30px;
+            margin-right: 10px;
+            vertical-align: middle; /* Align icons with text */
+            transition: transform 0.3s; /* Hover effect for icons */
+        }
+
+        .currency-icon:hover {
+            transform: scale(1.1); /* Scale up on hover */
+        }
+
+        .faq {
+            margin-top: 30px;
+            background-color: #e9ecef; /* Light gray background for FAQs */
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #007bff; /* Border for FAQ items */
+            border-radius: 5px;
+            background-color: #ffffff; /* White background for FAQ items */
+        }
+
+        .faq-item strong {
+            color: #007bff; /* Color for FAQ questions */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Support for Multiple Currencies</h1>
+        <p>Our Expense Tracker application supports multiple currencies, allowing users to manage their expenses in various formats. This feature enables users to input expenses in their local currencies, making it easier to track spending across different regions.</p>
+        
+        <h2>How It Works</h2>
+        <p>When adding an expense, users can select their preferred currency from a dropdown list. The application will convert the amount to a default currency for consistency in reporting and analysis.</p>
+        
+        <h2>Supported Currencies</h2>
+        <p>The following currencies are currently supported:</p>
+        <ul>
+            <li><img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" class="currency-icon" alt="USD">USD - United States Dollar</li>
+            <li><img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_the_Eurozone.svg" class="currency-icon" alt="EUR">EUR - Euro</li>
+            <li><img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_Kingdom.svg" class="currency-icon" alt="GBP">GBP - British Pound</li>
+            <li><img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg" class="currency-icon" alt="JPY">JPY - Japanese Yen</li>
+            <li><img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Flag_of_Australia.svg" class="currency-icon" alt="AUD">AUD - Australian Dollar</li>
+            <li><img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Canada.svg" class="currency-icon" alt="CAD">CAD - Canadian Dollar</li>
+            <li><img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_India.svg" class="currency-icon" alt="INR">INR - Indian Rupee</li>
+            <li><img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Flag_of_Switzerland.svg" class="currency-icon" alt="CHF">CHF - Swiss Franc</li>
+        </ul>
+
+        <h2>FAQs</h2>
+        <div class="faq">
+            <div class="faq-item">
+                <strong>How are conversion rates determined?</strong>
+                <p>Conversion rates are updated regularly based on market data to ensure accuracy.</p>
+            </div>
+            <div class="faq-item">
+                <strong>Can I switch currencies after entering an expense?</strong>
+                <p>Yes, you can edit an expense to change the currency at any time.</p>
+            </div>
+        </div>
+
+        <a href="mainproject.html">Back to Home</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333333;
+            margin-bottom: 25px;
+            font-size: 2em;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        input, select, button {
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        h2 {
+            margin-top: 30px;
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        .expense-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .expense-table th, .expense-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+            color: #333;
+        }
+
+        .expense-table th {
+            background-color: #f0f0f5;
+            font-weight: bold;
+        }
+
+        .expense-table td {
+            background-color: #fdfdfd;
+        }
+
+        #expenseChart {
+            max-width: 500px;
+            max-height: 500px;
+            width: 100%;
+            height: auto;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Expense Tracker</h1>
+        <form id="expense-form">
+            <label for="description">Description:</label>
+            <input type="text" id="description" placeholder="e.g., Groceries" required>
+
+            <label for="category">Category:</label>
+            <select id="category">
+                <option value="Food">Food</option>
+                <option value="Transport">Transport</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Bills">Bills</option>
+                <option value="Others">Others</option>
+            </select>
+
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" placeholder="e.g., 500" required>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" required>
+
+            <button type="submit">Add Expense</button>
+        </form>
+
+        <h2>Expenses</h2>
+        <table class="expense-table" id="expense-table">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody id="expense-summary">
+                <!-- Expenses will be dynamically added here -->
+            </tbody>
+        </table>
+
+        <div style="width: 50%; margin: auto; text-align: center;">
+            <h2>Expense Distribution by Category</h2>
+            <canvas id="expenseChart" width="100" height="100"></canvas>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
+    <script>
+        const form = document.getElementById('expense-form');
+        const expenseSummary = document.getElementById('expense-summary');
+        const ctx = document.getElementById('expenseChart').getContext('2d');
+
+        // Initialize category expenses
+        const categoryData = {
+            Food: 0,
+            Transport: 0,
+            Shopping: 0,
+            Entertainment: 0,
+            Bills: 0,
+            Others: 0
+        };
+
+        // Chart configuration
+        const chart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: Object.keys(categoryData),
+                datasets: [{
+                    label: "Expense Distribution",
+                    data: Object.values(categoryData),
+                    backgroundColor: [
+                        "#FF6384", // Food
+                        "#36A2EB", // Transport
+                        "#FFCE56", // Shopping
+                        "#4BC0C0", // Entertainment
+                        "#9966FF", // Bills
+                        "#FF9F40"  // Others
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.label || '';
+                                let value = context.raw;
+                                if (label) {
+                                    label += ': ';
+                                }
+                                label += "$" + value.toLocaleString();
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const description = document.getElementById('description').value;
+            const category = document.getElementById('category').value;
+            const amount = parseFloat(document.getElementById('amount').value);
+
+            // Create a new row in the table for the added expense
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${description}</td>
+                <td>${category}</td>
+                <td>$${amount.toLocaleString()}</td>
+            `;
+            expenseSummary.appendChild(row);
+
+            // Update category data
+            categoryData[category] += amount;
+
+            // Update chart data
+            chart.data.datasets[0].data = Object.values(categoryData);
+            chart.update(); // Refresh the chart
+
+            // Clear formi
+            form.reset();
+        });
+    </script>
+</body>
+</html>
